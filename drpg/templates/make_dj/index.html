@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel='stylesheet' href='{% static "css/style.css" %}'>
+HELLO! Passed from views.py: {{ con_001 }}
+Your ID: {{ id }}
+</head>
+<body>
+<form>
+    <p>Please choose the background color</p>
+    <div id="bg_color">
+        <input type="radio" id="bg_color_1" name="bg_color" value="red">
+        <label for="bg_color_1">Red</label>
+        <input type="radio" id="bg_color_2" name="bg_color" value="blue">
+        <label for="bg_color_2">Blue</label>
+        <input type="radio" id="bg_color_3" name="bg_color" value="orange">
+        <label for="bg_color_3">Orange</label>
+        <input type="radio" id="bg_color_4" name="bg_color" value="purple">
+        <label for="bg_color_4">Purple</label>
+    </div>
+    <div id="button_container" class="maincol">
+        <div id="save" class="object dj_button nosel">Save </div>
+        <div id="make" class="object dj_button nosel">Make </div>
+        <div id="run" class="object dj_button nosel">Run </div>
+        <div id="view" class="object dj_button nosel">View </div>
+        <div id="kill" class="object dj_button nosel">Kill </div>
+    </div>
+<a href="localhost:9020/view/{{ project_id }}">link</a>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+        var myProjectId = '{{ project_id }}';
+        console.log(myProjectId)
+        var myHeaders = new Headers({'proxy_host' : myProjectId});
+    </script>
+<script src="{% static 'js/site.js' %}"></script>
+</body>
+</html>

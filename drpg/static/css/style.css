@@ -1,0 +1,33 @@
+body{
+    backgrount-color: white;
+}
+
+.maincol {
+    display: flex;
+    flex-direction: column;
+    border: double;
+    width: 20%;
+    margin: 20px:
+}
+
+.object {
+    text-align: center;
+}
+
+.dj_button {
+    margin: 5px;
+    padding: 5px;
+    border-style: double;
+    border-width: 3px;
+}
+
+.nosel {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+}

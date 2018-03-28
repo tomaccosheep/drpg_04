@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    build: mysql/
+    networks:
+      - "app"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: "mysql"
+      MYSQL_PASSWORD: "Viapjor5"
+      MYSQL_ROOT_PASSWORD: "Viapjor5"
+      MYSQL_DATABASE: "db"
+    entrypoint: /entrypoint.sh
+    command: mysqld
+    volumes:
+      - "db-data:/var/lib/mysql"
+  drpg:
+    build: primary_container/
+    depends_on:
+      - db
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ".:/app"
+    networks:
+      - "app"
+    ports:
+      - "9020:9020"
+      - "8000:8000"
+    entrypoint: ["/bin/bash", "/app/primary_container/entrypoint.sh"]
+
+networks:
+  app:
+
+volumes:
+  db-data:
